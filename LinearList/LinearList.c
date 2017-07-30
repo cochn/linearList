@@ -2,12 +2,24 @@
 //  LinearList.c
 //  LinearList
 //
-//  Created by 曹臣 on 2017/7/27.
+//  Created by cochn on 2017/7/27.
 //  Copyright © 2017年 cc. All rights reserved.
 //
 
+typedef void * LinearListNodeValue;
+
+typedef struct {
+    
+    int capacity;
+    int length;
+    LinearListNodeValue * value;
+    
+}LinearList;
+
+#define LINEARLIST
 #include "LinearList.h"
 #include <stdlib.h>
+#include <string.h>
 
 /**创建线性表*/
 LinearList * linearCreat(int capacity){
@@ -47,7 +59,7 @@ int linearLength(LinearList *list){
 LinearListNodeValue linearNodeValueAtIndex(LinearList *list, int index){
     
     if (list == NULL || index < 0 || index >= list -> length) {
-        return -1;
+        return 0;
     }
     
     return list -> value[index];
@@ -64,8 +76,20 @@ LinearListNodeValue linearLastValue(LinearList *list){
 /**在index插入value*/
 void linearInsertAtIndex(LinearList *list, int index, LinearListNodeValue value){
     
-    if (list == NULL || index < 0 || index > list -> length || list -> length == list -> capacity) {
+    if (list == NULL || index < 0 || index > list -> length ) {
         return;
+    }
+    
+    //扩容
+    if (list -> length == list -> capacity) {
+        
+        int newCapacity = list -> capacity + 10;
+        LinearListNodeValue *newValue = malloc(newCapacity * sizeof(LinearListNodeValue));
+        if (newValue == NULL) return;
+        memcpy(newValue, list -> value, newCapacity * sizeof(LinearListNodeValue));
+        free(list -> value);
+        list -> value = newValue;
+        list -> capacity = newCapacity;
     }
     
     for (int i = list -> length;i >= index; i--) {
@@ -143,7 +167,7 @@ void linearPrint(LinearList *list){
     printf("\tlength=%d;\n",list -> length);
     printf("\tvalue=[");
     for (int i = 0; i < list -> length; i++) {
-        printf("%d",list -> value[i]);
+        printf("%p",list -> value[i]);
         if (i < list -> length - 1) {
             printf(",");
         }

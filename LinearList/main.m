@@ -2,7 +2,7 @@
 //  main.m
 //  LinearList
 //
-//  Created by 曹臣 on 2017/7/27.
+//  Created by cochn on 2017/7/27.
 //  Copyright © 2017年 cc. All rights reserved.
 //
 
@@ -13,15 +13,15 @@ void test(){
     
     LinearList *list = linearCreat(10);
     
-    linearAddValue(list, 10);
-    linearAddValue(list, 15);
-    linearAddValue(list, 10);
-    linearAddValue(list, 15);
-    linearAddValue(list, 15);
-    linearAddValue(list, 30);
-    linearAddValue(list, 20);
-    linearAddValue(list, 15);
-    linearInsertAtIndex(list, 0, 10);
+    linearAddValue(list, (LinearListNodeValue)10);
+    linearAddValue(list, (LinearListNodeValue)15);
+    linearAddValue(list, (LinearListNodeValue)10);
+    linearAddValue(list, (LinearListNodeValue)15);
+    linearAddValue(list, (LinearListNodeValue)15);
+    linearAddValue(list, (LinearListNodeValue)30);
+    linearAddValue(list, (LinearListNodeValue)20);
+    linearAddValue(list, (LinearListNodeValue)15);
+    linearInsertAtIndex(list, 0, (LinearListNodeValue)10);
     
     linearPrint(list);
     
@@ -29,19 +29,19 @@ void test(){
     printf("\nlength=%d\n",a);
     
     LinearListNodeValue value = linearNodeValueAtIndex(list, 2);
-    printf("\nvalue=%d\n",value);
+    printf("\nvalue=%p\n",(LinearListNodeValue)value);
     
     LinearListNodeValue firstValue = linearFirstValue(list);
     LinearListNodeValue lastValue = linearLastValue(list);
-    printf("firstValue=%d\nlastValue=%d\n",firstValue,lastValue);
+    printf("firstValue=%p\nlastValue=%p\n",(LinearListNodeValue)firstValue,(LinearListNodeValue)lastValue);
     
-    linearUpdateAtIndex(list, 0, 999);
+    linearUpdateAtIndex(list, 0, (LinearListNodeValue)999);
     linearPrint(list);
     
     linearRemoveAtIndex(list, 0);
     linearPrint(list);
     
-    linearRemoveValue(list, 10);
+    linearRemoveValue(list, (LinearListNodeValue)10);
     linearPrint(list);
     
     linearRemoveAll(list);
@@ -52,10 +52,28 @@ void test(){
     
 }
 
+void testP(){
+    
+    int a = 4;
+    int * b = &a;
+    void *c = &b;
+    NSLog(@"b:%p  sizeof:%lu\nc:%p    sizeof:%lu",b,sizeof(b),c,sizeof(c));
+    
+}
+
+void array(){
+    
+    NSString *str = @"11";
+    NSLog(@"%p",str);
+    NSArray *array = @[str,@"11",@"2",@"11",@"2",@"11",@"2",@"11",@"2"];
+    void * point = (__bridge void *)array;
+    //指针+1往后找一个地址 地址的大小根据类型判断 int * 会往后找4个字节 long * 找8个
+    *((long  *)point + 1) = 0xffffffffffff;//NSArray的count不能超过capacity
+}
+
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         
-        test();
     }
     return 0;
 }
