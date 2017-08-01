@@ -175,21 +175,3 @@ void linearPrint(LinearList *list){
     printf("];\n\t}\n");
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

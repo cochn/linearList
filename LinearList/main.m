@@ -73,7 +73,7 @@ void array(){
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        
+        test();
     }
     return 0;
 }
