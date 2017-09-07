@@ -2,6 +2,7 @@
 线性表的线式存储
 
 /**创建线性表*/
+```
 LinearList * linearCreat(int capacity){
     
     //先给linearList开辟内存，存放它的信息
@@ -14,6 +15,7 @@ LinearList * linearCreat(int capacity){
     
     return list;
 }
+```
 
 /**释放内存*/
 
