@@ -18,7 +18,7 @@ LinearList * linearCreat(int capacity){
 ```
 
 /**释放内存*/
-
+```
 void linearFree(LinearList * list){
     
     if (list == NULL) {
@@ -28,9 +28,9 @@ void linearFree(LinearList * list){
     free(list -> value);
     free(list);
 }
-
+```
 /**线性表长度*/
-
+```
 int linearLength(LinearList *list){
     if (list == NULL) {
         return -1;
@@ -38,9 +38,10 @@ int linearLength(LinearList *list){
     
     return list -> length;
 }
+```
 
 /**查询线性表index处的值*/
-
+```
 LinearListNodeValue linearNodeValueAtIndex(LinearList *list, int index){
     
     if (list == NULL || index < 0 || index >= list -> length) {
@@ -57,9 +58,9 @@ LinearListNodeValue linearFirstValue(LinearList *list){
 LinearListNodeValue linearLastValue(LinearList *list){
     return linearNodeValueAtIndex(list, list -> length -1);
 }
-
+```
 /**在index插入value*/
-
+```
 void linearInsertAtIndex(LinearList *list, int index, LinearListNodeValue value){
     
     if (list == NULL || index < 0 || index > list -> length ) {
@@ -85,15 +86,15 @@ void linearInsertAtIndex(LinearList *list, int index, LinearListNodeValue value)
     list -> value[index] = value;
     list -> length ++;
 }
-
+```
 /**在末尾添加value*/
-
+```
 void linearAddValue(LinearList *list, LinearListNodeValue value){
     linearInsertAtIndex(list, list -> length, value);
 }
-
+```
 /**删除index处的值*/
-
+```
 void linearRemoveAtIndex(LinearList *list, int index){
     
     if (list == NULL || index < 0 || index >= list -> length) {
@@ -107,9 +108,9 @@ void linearRemoveAtIndex(LinearList *list, int index){
     list -> length --;
     
 }
-
+```
 /**删除所有的值*/
-
+```
 void linearRemoveAll(LinearList *list){
     
     if (list == NULL) {
@@ -118,9 +119,9 @@ void linearRemoveAll(LinearList *list){
     
     list -> length = 0;
 }
-
+```
 /**删除value*///如果调用linearRemoveAtIndex实现，需要3层循环 时间复杂度太大不推荐
-
+```
 void linearRemoveValue(LinearList *list, LinearListNodeValue value){
     
     if (list == NULL) {
@@ -138,9 +139,9 @@ void linearRemoveValue(LinearList *list, LinearListNodeValue value){
     
     list -> length -= record;
 }
-
+```
 /**修改index处的值*/
-
+```
 void linearUpdateAtIndex(LinearList *list,int index, LinearListNodeValue value){
     
     if (list == NULL || index < 0 || index >= list -> length) {
@@ -149,3 +150,4 @@ void linearUpdateAtIndex(LinearList *list,int index, LinearListNodeValue value){
     
     list -> value[index] = value;
 }
+```
