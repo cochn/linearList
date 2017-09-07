@@ -1,7 +1,7 @@
 # linearList
 线性表的线式存储
 
-/***创建线性表**/
+//创建线性表
 ```
 LinearList * linearCreat(int capacity){
     
@@ -17,7 +17,7 @@ LinearList * linearCreat(int capacity){
 }
 ```
 
-/***释放内存**/
+//释放内存
 ```
 void linearFree(LinearList * list){
     
@@ -29,7 +29,7 @@ void linearFree(LinearList * list){
     free(list);
 }
 ```
-/***线性表长度**/
+//线性表长度
 ```
 int linearLength(LinearList *list){
     if (list == NULL) {
@@ -40,7 +40,7 @@ int linearLength(LinearList *list){
 }
 ```
 
-/***查询线性表index处的值**/
+//查询线性表index处的值
 ```
 LinearListNodeValue linearNodeValueAtIndex(LinearList *list, int index){
     
@@ -59,7 +59,7 @@ LinearListNodeValue linearLastValue(LinearList *list){
     return linearNodeValueAtIndex(list, list -> length -1);
 }
 ```
-/***在index插入value**/
+//在index插入value
 ```
 void linearInsertAtIndex(LinearList *list, int index, LinearListNodeValue value){
     
@@ -87,13 +87,13 @@ void linearInsertAtIndex(LinearList *list, int index, LinearListNodeValue value)
     list -> length ++;
 }
 ```
-/***在末尾添加value**/
+//在末尾添加value
 ```
 void linearAddValue(LinearList *list, LinearListNodeValue value){
     linearInsertAtIndex(list, list -> length, value);
 }
 ```
-/***删除index处的值**/
+//删除index处的值
 ```
 void linearRemoveAtIndex(LinearList *list, int index){
     
@@ -109,7 +109,7 @@ void linearRemoveAtIndex(LinearList *list, int index){
     
 }
 ```
-/***删除所有的值**/
+//删除所有的值
 ```
 void linearRemoveAll(LinearList *list){
     
@@ -120,7 +120,7 @@ void linearRemoveAll(LinearList *list){
     list -> length = 0;
 }
 ```
-/***删除value**///如果调用linearRemoveAtIndex实现，需要3层循环 时间复杂度太大不推荐
+//删除value//如果调用linearRemoveAtIndex实现，需要3层循环 时间复杂度太大不推荐
 ```
 void linearRemoveValue(LinearList *list, LinearListNodeValue value){
     
@@ -139,8 +139,7 @@ void linearRemoveValue(LinearList *list, LinearListNodeValue value){
     
     list -> length -= record;
 }
-```
-/***修改index处的值**/
+```//修改index处的值
 ```
 void linearUpdateAtIndex(LinearList *list,int index, LinearListNodeValue value){
     
